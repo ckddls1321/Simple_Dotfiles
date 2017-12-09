@@ -6,6 +6,23 @@
 
 - link:
         ~/.dotfiles: ''
+        ~/.bashrc: src/shell/bashrc
+        ~/.curlrc: src/shell/curlrc
+        ~/.inputrc: src/shell/inputrc
+        ~/.tmux.conf: src/tmux/tmux.conf
+        ~/.vimrc: src/vim/vimrc
+        ~/.zshrc: src/shell/zshrc
+        ~/.gitconfig: src/git/gitconfig
+        ~/.gitignore: src/git/gitignore
+        ~/.gitattributes: src/git/gitattributes
+        ~/.zshrc: src/shell/zshrc
+        ~/.oh-my-zsh: oh-my-zsh
+        ~/bin:
+          create: true
+          path: bin/
+        ~/.tmux/plugins/tpm:
+          create: true
+          path: tpm
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
