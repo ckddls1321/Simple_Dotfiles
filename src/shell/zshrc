@@ -1,0 +1,121 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/ckddls1321/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="dallas"
+DEFAULT_USER="ckddls1321"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+setopt extended_glob
+setopt interactivecomments
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+# Uncomment the following line to enable command auto-correction.
+#3 ENABLE_CORRECTION="true"
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=( tmux common-aliases sudo systemd golang urltools dirhistory docker jira npm pip python repo extract )
+
+#source $ZSH/antigen.zsh
+source $ZSH/oh-my-zsh.sh
+
+#antigen use oh-my-zsh
+#antigen bundle --loc=lib
+#antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen theme ys
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
+zmodload zsh/zprof
+
+
+# Example aliases
+ alias zshconfig="mate ~/.zshrc"
+ alias ohmyzsh="mate ~/.oh-my-zsh"
+ alias sudo="sudo -E -H"
+ alias ll="ls -lh"
+ alias la="ls -A"
+ alias gl="git pull --rebase"
+ alias cp="rsync -avz --info=progress2"
+ alias wa="wemux attach"
+ alias ws="wemux start"
+ alias wl="wemux list-sessions"
+ alias make="make -j $(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')"
+ alias ctags="ctags --extra=+q --asm-kinds=+dlmt --c-kinds=+defgpstuxlm --c++-kinds=+defgcpstux -I _GLIBCXX_NOEXCEPT --append=yes"
+ alias cscope="cscope -q -C"
+ alias automake="automake --foreign --ad-missing --copy"
+ alias qemu-arm="qemu-arm -L /usr/arm-linux-gnueabi/"
+ alias find="find ."
+ NB_CORES=$(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')
+ alias make="make -j ${NB_CORES} -l ${NB_CORES} 2> error_log"
+ alias rm='rm -i'
+
+# PYENV settings
+#export PATH=${HOME}/.pyenv/bin:${PATH}
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+# RUBYENV settings
+#export RBENV_ROOT="${HOME}/.rbenv"
+#if [ -d "${RBENV_ROOT}" ]; then
+#  export PATH="${RBENV_ROOT}/bin:${PATH}"
+#  eval "$(rbenv init -)"
+#fi
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=12000
+SAVEHIST=12000
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/ckddls1321/.zshrc'
+
+#autoload -Uz compinit &&  compinit
+#autoload -Uz vcs_info
+#autoload zmv
+#autoload zcalc
+#zstyle :vcs_info:* enable git
+#zstyle :vcs_info:git:* check-for-changes true
+#antigen apply
+# End of lines added by compinstall
+
