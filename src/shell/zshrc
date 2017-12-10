@@ -110,12 +110,9 @@ SAVEHIST=12000
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ckddls1321/.zshrc'
 
-#autoload -Uz compinit &&  compinit
-#autoload -Uz vcs_info
-#autoload zmv
-#autoload zcalc
+autoload zmv
+autoload zcalc
 #zstyle :vcs_info:* enable git
 #zstyle :vcs_info:git:* check-for-changes true
-#antigen apply
-# End of lines added by compinstall
-
+#
+## Manual ZSHoptions
