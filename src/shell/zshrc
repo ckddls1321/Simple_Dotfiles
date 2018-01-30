@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/ckddls1321/.oh-my-zsh
+export ZSH=/home/ckddls1321/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -76,6 +76,7 @@ zmodload zsh/zprof
  alias sudo="sudo -E -H"
  alias ll="ls -lh"
  alias la="ls -A"
+ alias gc="git commit -m"
  alias gl="git pull --rebase"
  alias cp="rsync -avz --info=progress2"
  alias wa="wemux attach"
@@ -87,28 +88,60 @@ zmodload zsh/zprof
  alias automake="automake --foreign --ad-missing --copy"
  alias qemu-arm="qemu-arm -L /usr/arm-linux-gnueabi/"
  alias find="find ."
- NB_CORES=$(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')
- alias make="make -j ${NB_CORES} -l ${NB_CORES} 2> error_log"
  alias rm='rm -i'
 
 # PYENV settings
-#export PATH=${HOME}/.pyenv/bin:${PATH}
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+if [ -d $HOME/.pyenv ]; then
+	export PATH=${HOME}/.pyenv/bin:${PATH}
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
 # RUBYENV settings
-#export RBENV_ROOT="${HOME}/.rbenv"
-#if [ -d "${RBENV_ROOT}" ]; then
-#  export PATH="${RBENV_ROOT}/bin:${PATH}"
-#  eval "$(rbenv init -)"
-#fi
+export RBENV_ROOT="${HOME}/.rbenv"
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+# GOENV setting
+if [ -d $HOME/.goenv ]; then
+	export PATH=${HOME}/.goenv/bin:${PATH}
+	export PATH=${HOME}/.goenv/shims:${PATH}
+fi
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# Extend Local Bin Lib path
+export PATH=${HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=/uar/loscal/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+# Ubuntu
+export TZ='ASIA/Seoul'
+# ROS
+if [ -d /opt/ros/kinetic ]; then
+	source /opt/ros/kinetic/setup.zsh
+fi
+if [ -d $HOME/catkin_ws ]; then
+	source $HOME/catkin_ws/devel/setup.zsh
+	export PATH=${PATH}:$HOME/catkin_ws/devel/bin
+	export ROS_PACKAGE_PATH=${HOME}/catkin_ws/src:$ROS_PACKAGE_PATH
+fi
+# Extend Cuda
+if [ -d /usr/local/cuda ]; then
+	export PATH=$PATH:/usr/local/cuda/bin
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+fi
+# Ubuntu IDE - easy management of IDE
+if [ -d $HOME/.local/share/umake/bin ]; then
+	export PATH=$PATH:$HOME/.local/share/umake/bin
+fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=12000
-SAVEHIST=12000
+HISTSIZE=20000
+SAVEHIST=20000
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/ckddls1321/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload zmv
 autoload zcalc
