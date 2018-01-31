@@ -63,12 +63,10 @@
 
     # Remove the tag with the specified tag name if
     # exists and tag the latest commit with that name.
-
     retag = "!f() { \
         git tag -d "$1" &> /dev/null; \
         git tag $1; \
     }; f"
-
 
 [color "branch"]
     current = green bold
@@ -107,22 +105,12 @@
 
 
 [push]
-    # Make `git push` automatically push relevant
-    # annotated tags when pushing branches out.
     followTags = true
 
 [user]
-    # Don't guess the user's identity.
-    # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
     useConfigOnly = true
 	email = ckddls1321@naver.com
 	name = ChoiChangIn
 
 [include]
-    # Load local configs.
-    # https://git-scm.com/docs/git-config#_includes
-    #
-    # [!] The following needs to remain at the end of this file in
-    #     order to allow any of the above configs to be overwritten
-    #     by the local ones
     path = ~/.gitconfig.local

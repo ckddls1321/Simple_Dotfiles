@@ -1,29 +1,35 @@
 - defaults:
         link:
-                  relink: true
+            relink: true
+            force: true
 
 - clean: ['~']
 
 - link:
-        ~/.dotfiles: ''
         ~/.bashrc: src/shell/bashrc
-        ~/.curlrc: src/shell/curlrc
-        ~/.inputrc: src/shell/inputrc
         ~/.tmux.conf: src/tmux/tmux.conf
         ~/.vimrc: src/vim/vimrc
         ~/.zshrc: src/shell/zshrc
         ~/.gitconfig: src/git/gitconfig
         ~/.gitignore: src/git/gitignore
-        ~/.gitattributes: src/git/gitattributes
         ~/.zshrc: src/shell/zshrc
         ~/.oh-my-zsh: oh-my-zsh
         ~/.vim/.ycm_extra_conf.py: src/vim/ycm_extra_conf.py
-        ~/bin:
-          create: true
-          path: bin/
         ~/.tmux/plugins/tpm:
           create: true
           path: tpm
+        ~/.pyenv:
+          create: true
+          path: pyenv
+        ~/.pyenv/plugins/pyenv-virtualenv:
+          create: true
+          path: pyenv-virtualenv
+        ~/.rbenv:
+          create: true
+          path: rbenv
+        ~/.nvm:
+          create: true
+          path: nvm
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]

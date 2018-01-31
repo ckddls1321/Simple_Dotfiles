@@ -120,7 +120,7 @@ export TZ='ASIA/Seoul'
 if [ -d /opt/ros/kinetic ]; then
 	source /opt/ros/kinetic/setup.zsh
 fi
-if [ -d $HOME/catkin_ws ]; then
+if [ -d $HOME/catkin_ws/deve/ ]; then
 	source $HOME/catkin_ws/devel/setup.zsh
 	export PATH=${PATH}:$HOME/catkin_ws/devel/bin
 	export ROS_PACKAGE_PATH=${HOME}/catkin_ws/src:$ROS_PACKAGE_PATH
