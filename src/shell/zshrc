@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/ckddls1321/.oh-my-zsh
@@ -82,7 +82,8 @@ zmodload zsh/zprof
  alias wa="wemux attach"
  alias ws="wemux start"
  alias wl="wemux list-sessions"
- alias make="make -j $(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')"
+# alias make="make -j $(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')"
+ alias make="make -j8"
  alias ctags="ctags --extra=+q --asm-kinds=+dlmt --c-kinds=+defgpstuxlm --c++-kinds=+defgcpstux -I _GLIBCXX_NOEXCEPT --append=yes"
  alias cscope="cscope -q -C"
  alias automake="automake --foreign --ad-missing --copy"
@@ -107,10 +108,6 @@ if [ -d $HOME/.goenv ]; then
 	export PATH=${HOME}/.goenv/bin:${PATH}
 	export PATH=${HOME}/.goenv/shims:${PATH}
 fi
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-# Extend Local Bin Lib path
 export PATH=${HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=/uar/loscal/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
@@ -119,7 +116,9 @@ export TZ='ASIA/Seoul'
 # ROS
 if [ -d /opt/ros/kinetic ]; then
 	source /opt/ros/kinetic/setup.zsh
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ros/kinetic/lib/x86_64-linux-gnu
 fi
+
 if [ -d $HOME/catkin_ws/deve/ ]; then
 	source $HOME/catkin_ws/devel/setup.zsh
 	export PATH=${PATH}:$HOME/catkin_ws/devel/bin
@@ -135,6 +134,13 @@ if [ -d $HOME/.local/share/umake/bin ]; then
 	export PATH=$PATH:$HOME/.local/share/umake/bin
 fi
 
+# Android Tools
+if [ -d $HOME/Android/Sdk ]; then
+	export PATH=$PATH:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/ndk-bundle
+fi
+
+
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=20000
@@ -149,3 +155,8 @@ autoload zcalc
 #zstyle :vcs_info:git:* check-for-changes true
 #
 ## Manual ZSHoptions
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NVM
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" # This loads nvm
+export PATH=$HOME/.nvm/versions/node/v8.9.0/bin:$PATH

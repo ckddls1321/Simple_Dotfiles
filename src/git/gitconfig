@@ -109,8 +109,10 @@
 
 [user]
     useConfigOnly = true
-	email = ckddls1321@naver.com
-	name = ChoiChangIn
+	email = ckddls1321@Naver.com
+	name = ckddls1321
 
 [include]
     path = ~/.gitconfig.local
+[color]
+	ui = auto

@@ -27,6 +27,9 @@
         ~/.rbenv:
           create: true
           path: rbenv
+        ~/.goenv:
+          create: true
+          path: goenv
         ~/.nvm:
           create: true
           path: nvm
