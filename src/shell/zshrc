@@ -144,6 +144,10 @@ if [ -d $HOME/.cargo ]; then
 	export PATH=$PATH:$HOME/.cargo/bin
 fi
 
+# IDE
+if [ -d $HOME/ide ]; then
+	export PATH=$PATH:$HOME/ide/bin
+fi
 
 
 # Lines configured by zsh-newuser-install

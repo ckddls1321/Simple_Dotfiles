@@ -26,16 +26,16 @@
 #
 #cd ..
 
-cd MVSEC
-wget http://visiondata.cis.upenn.edu/mvsec/outdoor_day/outdoor_day1_data.bag &
-wget http://visiondata.cis.upenn.edu/mvsec/indoor_flying/indoor_flying1_data.bag &
-wget http://visiondata.cis.upenn.edu/mvsec/indoor_flying/indoor_flying_calib.zip &
-wget http://visiondata.cis.upenn.edu/mvsec/outdoor_day/outdoor_day_calib.zip &
-cd ..
+#cd MVSEC
+#wget http://visiondata.cis.upenn.edu/mvsec/outdoor_day/outdoor_day1_data.bag &
+#wget http://visiondata.cis.upenn.edu/mvsec/indoor_flying/indoor_flying1_data.bag &
+#wget http://visiondata.cis.upenn.edu/mvsec/indoor_flying/indoor_flying_calib.zip &
+#wget http://visiondata.cis.upenn.edu/mvsec/outdoor_day/outdoor_day_calib.zip &
+#cd ..
 
-#cd TUM
-#wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk.tgz &
+cd TUM
+wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk.tgz &
 #wget https://vision.in.tum.de/rgbd/dataset/freiburg2/rgbd_dataset_freiburg2_desk.tgz &
 #wget https://vision.in.tum.de/rgbd/dataset/freiburg2/rgbd_dataset_freiburg2_large_with_loop.tgz &
-#cd ..
+cd ..
 

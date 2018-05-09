@@ -1,0 +1,19 @@
+#!/bin/sh
+#wget http://dl-ssl.google.com/android/repository/tools_r25.2.5-linux.zip
+#unzip tools*
+cd tools/bin
+./sdkmanager "platforms;android-14"
+./sdkmanager "platforms;android-15"
+./sdkmanager "platforms;android-16"
+./sdkmanager "platforms;android-17"
+./sdkmanager "platforms;android-18"
+./sdkmanager "platforms;android-19"
+./sdkmanager "platforms;android-20"
+./sdkmanager "platforms;android-21"
+./sdkmanager "platforms;android-22"
+./sdkmanager "platforms;android-23"
+./sdkmanager "platforms;android-24"
+./sdkmanager "platforms;android-25"
+./sdkmanager "platforms;android-26"
+./sdkmanager "platforms;android-27"
+./sdkmanager "build-tools;25.0.2"
