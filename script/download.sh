@@ -4,6 +4,7 @@
 #mkdir PENNCOSYVIO
 #mkdir MVSEC
 #mkdir TUM
+#mkdir DAVIS
 
 #cd EUROC
 
@@ -33,9 +34,18 @@
 #wget http://visiondata.cis.upenn.edu/mvsec/outdoor_day/outdoor_day_calib.zip &
 #cd ..
 
-cd TUM
-wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk.tgz &
+#cd TUM
+#wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk.tgz &
 #wget https://vision.in.tum.de/rgbd/dataset/freiburg2/rgbd_dataset_freiburg2_desk.tgz &
 #wget https://vision.in.tum.de/rgbd/dataset/freiburg2/rgbd_dataset_freiburg2_large_with_loop.tgz &
+#cd ..
+
+cd DAVIS
+#wget http://rpg.ifi.uzh.ch/datasets/davis/boxes_6dof.zip
+#wget http://rpg.ifi.uzh.ch/datasets/davis/outdoors_walking.zip
+#wget http://rpg.ifi.uzh.ch/datasets/davis/dynamic_6dof.zip
+wget http://rpg.ifi.uzh.ch/datasets/davis/calibration.zip
+#wget http://rpg.ifi.uzh.ch/datasets/davis/poster_6dof.zip
 cd ..
+
 
