@@ -16,12 +16,12 @@ flags = [
 	'-x',
 	'-ISUB/usr/include',
 	'-ISUB/usr/local/include',
-	'-ISUB/usr/lib/gcc/x86_64-linux-gnu/5.4.0/include',
-	'-ISUB/usr/src/linux-headers-4.4.0-47-generic/include',
-	'-ISUB/usr/lib/clang/3.8.0/include',
-	'-ISUB/usr/lib/llvm-3.8/include',
-	'-ISUB/usr/include/x86_64-linux-gnu',
-	'-ISUB/usr/include/c++/5.4.0',
+	'-ISUB/usr/lib/gcc/x86_64-linux-gnu/5.5.0/include/',
+	'-ISUB/usr/include/x86_64-linux-gnu/c++/5.5.0/',
+	'-ISUB/usr/include/x86_64-linux-gnu/gnu',
+	'-I/usr/include/x86_64-linux-gnu/',
+	'-ISUB/usr/include/x86_64-linux-gnu/openssl',
+	'-ISUB/usr/include/c++/5.5.0/'
 ]
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]

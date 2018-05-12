@@ -2,7 +2,7 @@
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/ckddls1321/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -109,7 +109,8 @@ if [ -d $HOME/.goenv ]; then
 	export PATH=${HOME}/.goenv/shims:${PATH}
 fi
 export PATH=${HOME}/bin:${PATH}
-export LD_LIBRARY_PATH=/uar/loscal/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/uar/local/lib:$LD_LIBRARY_PATH
+export LD_RUN_PATH=/uar/local/lib:$LD_RUN_PATH
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 # Ubuntu
 export TZ='ASIA/Seoul'
@@ -119,7 +120,7 @@ if [ -d /opt/ros/kinetic ]; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ros/kinetic/lib/x86_64-linux-gnu
 fi
 
-if [ -d $HOME/catkin_ws/deve/ ]; then
+if [ -d $HOME/catkin_ws/devel/ ]; then
 	source $HOME/catkin_ws/devel/setup.zsh
 	export PATH=${PATH}:$HOME/catkin_ws/devel/bin
 	export ROS_PACKAGE_PATH=${HOME}/catkin_ws/src:$ROS_PACKAGE_PATH
@@ -129,15 +130,25 @@ if [ -d /usr/local/cuda ]; then
 	export PATH=$PATH:/usr/local/cuda/bin
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 fi
+
 # Ubuntu IDE - easy management of IDE
 if [ -d $HOME/.local/share/umake/bin ]; then
 	export PATH=$PATH:$HOME/.local/share/umake/bin
 fi
 
 # Android Tools
-if [ -d $HOME/Android/Sdk ]; then
-	export PATH=$PATH:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/ndk-bundle
+# Android Build Config
+export ANDROID_ABI=arm64-v8a
+#export ANDROID_ABI="arm64-v8a with NEON"
+#export NDK_ROOT=$HOME/Android/Sdk/ndk-bundle
+#export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/toolchain/android_legacy_sdk
+if [ -d $ANDROID_HOME ]; then
+	export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 fi
+export NDK_ROOT=$HOME/toolchain/android_legacy_ndk/android-ndk-r14b/
+export ANDROID_NDK_r14=$HOME/toolchain/android_legacy_ndk/android-ndk-r14b/
+export PATH=$PATH:$HOME/toolchain/android_legacy_ndk/android-ndk-r14b
 
 # RUST
 if [ -d $HOME/.cargo ]; then

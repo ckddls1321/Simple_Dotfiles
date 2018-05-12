@@ -1,10 +1,10 @@
 " ----------------------------------------------------------------------
 " | General Settings                                                   |
 " ----------------------------------------------------------------------
-set nocompatible               " Don't make Vim vi-compatibile.
+set nocompatible    " Don't make Vim vi-compatibile.
 set autoread		"auto reload when file changed"
 set autowrite		"auto relead when edit another file"
-set mouse=a
+set mouse=a         "Use Mouse on terminal"
 set sel=exclusive
 set mps+=<:>
 set fileformats=unix,dos,mac
@@ -12,6 +12,8 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set ttyfast
 set smarttab
+set autochdir
+set ttyfast
 set smartindent
 set autoindent
 if exists('+breakindent')
@@ -210,6 +212,7 @@ call vundle#begin("~/.vim/plugins")
 	Plugin 'easymotion/vim-easymotion'    "Vim-easymotion:extend f,s search etc
 	Plugin 'christoomey/vim-tmux-navigator' "Vim-Tmux Integration
 	Plugin 'wakatime/vim-wakatime'
+    Plugin 'gisodal/vimgdb'
 	"-------------------------------------
 	"Code Display:Highlighting,Interface
 	"-------------------------------------
@@ -244,6 +247,7 @@ call vundle#begin("~/.vim/plugins")
 	"-------------------------------------
 	"File/buf/ Explorer
 	"-------------------------------------
+    Plugin 'mhinz/vim-startify'
     Plugin 'kien/ctrlp.vim'
 	Plugin 'shougo/vimfiler.vim'	  "@@FILE EXPLORER@@ MUST HAVE
 	Plugin 'majutsushi/tagbar'        "Source Tag Explorer
@@ -541,7 +545,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_extensions = ['tag', 'buffertag','mixed']
 "-----------IGNORE settings--------"
 set wildmode=list:longest,full
-set wildmenu "turn on wild menu
 set wildignore=*.o,*.obj "stuff to ignore when tab completing
 set wildignore+=*DS_Store*
 set wildignore+=*sass-cache*
