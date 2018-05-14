@@ -135,6 +135,7 @@ set wildmenu                   " Enable enhanced command-line
 
 set winminheight=0             " Allow windows to be squashed.
 syntax on
+set tags+=tags;/ "Ctags Finding Upper directory"
 " typos miss handling
 command! -bang E e<bang>
 command! -bang Q q<bang>
@@ -233,6 +234,7 @@ call vundle#begin("~/.vim/plugins")
 	Plugin 'hdima/python-syntax'	  "Python
 	Plugin 'octol/vim-cpp-enhanced-highlight' "CPP Highlight
 	Plugin 'jelera/vim-javascript-syntax' "Javascript Syntax Highlight
+    Plugin 'joereynolds/gtags-scope'
 	Plugin 'tomasr/molokai'
 	Plugin 'kshenoy/vim-signature'	  "Highlight mark of vim
 	Plugin 'godlygeek/tabular'		  "Aligning Text
@@ -303,6 +305,35 @@ let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "passive_filetypes": []
 \}
+" ----------------------------------------------------------------------
+" | Plugins - Markdown                                                 |
+" ----------------------------------------------------------------------
+function! LoadGTAGSCscope()
+    let db = findfile("GTAGS",".;")
+    if(!empty(db))
+        let path = strpart(db,0,match(db,"/GTAGS$"))
+        set nocscopeverbose
+        exe "cs add " . db . " " . path
+        silent execute "!echo setting color scheme to " . db . " " . path
+        set cscopeverbose
+    endif
+endfunction
+if has("cscope")
+    set cscopetag
+    set csprg=gtags-cscope
+    set csto=0
+    au BufEnter /* call LoadGTAGSCscope()
+    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+    "Mouse
+    nmap <2-LeftMouse> :cs find d<C-R>=expand("<cword>")<CR>:<C-R>=line('.')<CR>:%<CR>
+
+endif
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
 " ----------------------------------------------------------------------

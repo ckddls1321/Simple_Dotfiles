@@ -1,10 +1,12 @@
 #!/usr/bin/python
 
 import argparse
+import roslib
 import rosbag
 import rospy
 import cv2
 from geometry_msgs.msg import PoseStamped
+import cv_bridge
 from cv_bridge import CvBridge, CvBridgeError
 import os
 
@@ -47,16 +49,16 @@ def timestamp_str(ts):
     return str(ts.secs) + "." + str(ts.nsecs).zfill(9)
 
 
-if not os.path_exists("limages"):
+if not os.path.exists("limages"):
     os.makedirs("limages")
 
-if not os.path_exists("rimages"):
+if not os.path.exists("rimages"):
     os.makedirs("rimages")
 
-if not os.path_exists("lviimages"):
+if not os.path.exists("lviimages"):
     os.makedirs("lviimages")
 
-if not os.path_exists("rviimages"):
+if not os.path.exists("rviimages"):
     os.makedirs("rviimages")
 
 limage_index = 0
@@ -80,10 +82,13 @@ rimu_file = open('rimu.txt', 'w')
 viimu_file = open('vi_imu.txt', 'w')
 reset_time = rospy.Time()
 
+
 with rosbag.Bag(args.bag, 'r') as bag:
     reset_time.secs = sec
     reset_time.nsecs = nsecs
     print("Reset time: " + timestamp_str(reset_time))
+
+    bridge = cv_bridge.CvBridge()
 
 
     for topic, msg, t in bag.read_messages():
@@ -139,19 +144,19 @@ with rosbag.Bag(args.bag, 'r') as bag:
 
         # Events
 
-        if topic == args.levents_topic:
+        if topic == args.levent_topic:
             for e in msg.events:
                 levents_file.write(str(e.x)+" ")
                 levents_file.write(str(e.y)+" ")
                 levents_file.write(("1" if e.polarity else "0")+"\n")
                 levent_sum = levent_sum + 1
 
-        if topic == args.levents_topic:
+        if topic == args.revent_topic:
             for e in msg.events:
-                levents_file.write(str(e.x)+" ")
-                levents_file.write(str(e.y)+" ")
-                levents_file.write(("1" if e.polarity else "0")+"\n")
-                levent_sum = levent_sum + 1
+                revents_file.write(str(e.x)+" ")
+                revents_file.write(str(e.y)+" ")
+                revents_file.write(("1" if e.polarity else "0")+"\n")
+                revent_sum = levent_sum + 1
 
         # IMU
 
