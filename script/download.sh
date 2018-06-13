@@ -43,6 +43,9 @@ cd ..
 #wget https://vision.in.tum.de/rgbd/dataset/freiburg2/rgbd_dataset_freiburg2_large_with_loop.tgz &
 #cd ..
 
+#cd VITUM
+
+
 #cd DAVIS
 #wget http://rpg.ifi.uzh.ch/datasets/davis/boxes_6dof.zip
 #wget http://rpg.ifi.uzh.ch/datasets/davis/outdoors_walking.zip

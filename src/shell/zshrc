@@ -49,6 +49,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=( tmux common-aliases sudo systemd golang urltools dirhistory docker jira npm pip python repo extract )
 
 #source $ZSH/antigen.zsh
+
 source $ZSH/oh-my-zsh.sh
 
 #antigen use oh-my-zsh
@@ -82,12 +83,10 @@ zmodload zsh/zprof
  alias wa="wemux attach"
  alias ws="wemux start"
  alias wl="wemux list-sessions"
-# alias make="make -j $(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')"
- alias make="make -j8"
+ alias make="make -j $(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')"
  alias ctags="ctags --extra=+q --asm-kinds=+dlmt --c-kinds=+defgpstuxlm --c++-kinds=+defgcpstux -I _GLIBCXX_NOEXCEPT --append=yes"
  alias cscope="cscope -q -C"
  alias automake="automake --foreign --ad-missing --copy"
- alias qemu-arm="qemu-arm -L /usr/arm-linux-gnueabi/"
  alias find="find ."
  alias rm='rm -i'
 
@@ -122,6 +121,7 @@ fi
 
 if [ -d $HOME/catkin_ws/devel/ ]; then
 	source $HOME/catkin_ws/devel/setup.zsh
+	source $HOME/catkin_ws/install/setup.zsh
 	export PATH=${PATH}:$HOME/catkin_ws/devel/bin
 	export ROS_PACKAGE_PATH=${HOME}/catkin_ws/src:$ROS_PACKAGE_PATH
 fi
@@ -138,11 +138,11 @@ fi
 
 # Android Tools
 # Android Build Config
-export ANDROID_ABI=arm64-v8a
-#export ANDROID_ABI="arm64-v8a with NEON"
-#export NDK_ROOT=$HOME/Android/Sdk/ndk-bundle
-#export ANDROID_HOME=$HOME/Android/Sdk
-export ANDROID_HOME=$HOME/toolchain/android_legacy_sdk
+#export ANDROID_ABI=arm64-v8a
+export ANDROID_ABI="arm64-v8a with NEON"
+export NDK_ROOT=$HOME/Android/Sdk/ndk-bundle
+export ANDROID_HOME=$HOME/Android/Sdk
+#export ANDROID_HOME=$HOME/toolchain/android_legacy_sdk
 if [ -d $ANDROID_HOME ]; then
 	export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 fi
@@ -150,9 +150,16 @@ export NDK_ROOT=$HOME/toolchain/android_legacy_ndk/android-ndk-r14b/
 export ANDROID_NDK_r14=$HOME/toolchain/android_legacy_ndk/android-ndk-r14b/
 export PATH=$PATH:$HOME/toolchain/android_legacy_ndk/android-ndk-r14b
 
+# Nodejs & NPM
+
 # RUST
 if [ -d $HOME/.cargo ]; then
 	export PATH=$PATH:$HOME/.cargo/bin
+fi
+
+# GO
+if [ -d /usr/lib/go-1.10 ]; then
+    export PATH=$PATH:/usr/lib/go-1.10/bin
 fi
 
 # IDE
@@ -160,11 +167,23 @@ if [ -d $HOME/ide ]; then
 	export PATH=$PATH:$HOME/ide/bin
 fi
 
-
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=20000
-SAVEHIST=20000
+HISTFILE="$HOME/.histfile"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'

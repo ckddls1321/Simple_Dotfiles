@@ -15,6 +15,9 @@
         ~/.zshrc: src/shell/zshrc
         ~/.ctags: src/tag/.ctags
         ~/.globalrc: src/tag/gtags.conf
+        ~/.vim/plugins/vim-template:
+          create: true
+          path: src/vim/vim-template
         ~/.oh-my-zsh: oh-my-zsh
         ~/.vim/.ycm_extra_conf.py: src/vim/ycm_extra_conf.py
         ~/.tmux/plugins/tpm:

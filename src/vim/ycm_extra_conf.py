@@ -161,10 +161,10 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
   flags = IncludeFlagsOfSubdirectory( flags, working_directory )
 
   #include framework header in derivedData/.../Products
-  flags = IncludeFlagsOfFrameworkHeaders( flags, working_directory )
+  #flags = IncludeFlagsOfFrameworkHeaders( flags, working_directory )
 
   #include libclang header in xctoolchain
-  flags = IncludeClangInXCToolChain( flags, working_directory )
+  #flags = IncludeClangInXCToolChain( flags, working_directory )
   new_flags = []
   make_next_absolute = False
   path_flags = [ '-isystem', '-I', '-iquote', '--sysroot=' ]
