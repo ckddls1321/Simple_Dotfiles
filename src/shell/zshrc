@@ -46,16 +46,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( tmux common-aliases sudo systemd golang urltools dirhistory docker jira npm pip python repo extract )
-
-#source $ZSH/antigen.zsh
+plugins=(tmux common-aliases sudo systemd golang urltools dirhistory docker jira npm pip python repo extract )
 
 source $ZSH/oh-my-zsh.sh
 
-#antigen use oh-my-zsh
-#antigen bundle --loc=lib
-#antigen bundle zsh-users/zsh-syntax-highlighting
-#antigen theme ys
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -67,25 +61,17 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
 zmodload zsh/zprof
 
-
 # Example aliases
- alias zshconfig="mate ~/.zshrc"
- alias ohmyzsh="mate ~/.oh-my-zsh"
  alias sudo="sudo -E -H"
  alias ll="ls -lh"
  alias la="ls -A"
  alias gc="git commit -m"
  alias gl="git pull --rebase"
  alias cp="rsync -avz --info=progress2"
- alias wa="wemux attach"
- alias ws="wemux start"
- alias wl="wemux list-sessions"
  alias make="make -j $(cat /proc/cpuinfo | grep processor | wc | sed -r 's/^ +([0-9])+.*//')"
  alias ctags="ctags --extra=+q --asm-kinds=+dlmt --c-kinds=+defgpstuxlm --c++-kinds=+defgcpstux -I _GLIBCXX_NOEXCEPT --append=yes"
- alias cscope="cscope -q -C"
  alias automake="automake --foreign --ad-missing --copy"
  alias find="find ."
  alias rm='rm -i'
@@ -107,6 +93,7 @@ if [ -d $HOME/.goenv ]; then
 	export PATH=${HOME}/.goenv/bin:${PATH}
 	export PATH=${HOME}/.goenv/shims:${PATH}
 fi
+# Add LB Configs
 export PATH=${HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=/uar/local/lib:$LD_LIBRARY_PATH
 export LD_RUN_PATH=/uar/local/lib:$LD_RUN_PATH
@@ -114,11 +101,10 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 # Ubuntu
 export TZ='ASIA/Seoul'
 # ROS
-if [ -d /opt/ros/kinetic ]; then
-	source /opt/ros/kinetic/setup.zsh
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ros/kinetic/lib/x86_64-linux-gnu
+if [ -d /opt/ros/melodic]; then
+	source /opt/ros/melodic/setup.zsh
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ros/melodic/lib/x86_64-linux-gnu
 fi
-
 if [ -d $HOME/catkin_ws/devel/ ]; then
 	source $HOME/catkin_ws/devel/setup.zsh
 	source $HOME/catkin_ws/install/setup.zsh
@@ -130,43 +116,27 @@ if [ -d /usr/local/cuda ]; then
 	export PATH=$PATH:/usr/local/cuda/bin
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 fi
-
-# Ubuntu IDE - easy management of IDE
-if [ -d $HOME/.local/share/umake/bin ]; then
-	export PATH=$PATH:$HOME/.local/share/umake/bin
-fi
-
-# Android Tools
-# Android Build Config
-#export ANDROID_ABI=arm64-v8a
+# Android Tools, Build Config
 export ANDROID_ABI="arm64-v8a with NEON"
 export NDK_ROOT=$HOME/Android/Sdk/ndk-bundle
 export ANDROID_HOME=$HOME/Android/Sdk
-#export ANDROID_HOME=$HOME/toolchain/android_legacy_sdk
 if [ -d $ANDROID_HOME ]; then
 	export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 fi
-export NDK_ROOT=$HOME/toolchain/android_legacy_ndk/android-ndk-r14b/
-export ANDROID_NDK_r14=$HOME/toolchain/android_legacy_ndk/android-ndk-r14b/
-export PATH=$PATH:$HOME/toolchain/android_legacy_ndk/android-ndk-r14b
-
-# Nodejs & NPM
-
+if [ -d $NDK_ROOT]; then
+    export PATH=$PATH:$NDK_ROOT
+fi
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" # This loads nvm
 # RUST
 if [ -d $HOME/.cargo ]; then
 	export PATH=$PATH:$HOME/.cargo/bin
 fi
-
 # GO
 if [ -d /usr/lib/go-1.10 ]; then
     export PATH=$PATH:/usr/lib/go-1.10/bin
 fi
-
-# IDE
-if [ -d $HOME/ide ]; then
-	export PATH=$PATH:$HOME/ide/bin
-fi
-
 # Lines configured by zsh-newuser-install
 HISTFILE="$HOME/.histfile"
 HISTSIZE=10000000
@@ -195,7 +165,3 @@ autoload zcalc
 #
 ## Manual ZSHoptions
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# NVM
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" # This loads nvm
-export PATH=$HOME/.nvm/versions/node/v8.9.0/bin:$PATH

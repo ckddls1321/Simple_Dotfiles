@@ -2,8 +2,8 @@
 " | General Settings                                                   |
 " ----------------------------------------------------------------------
 set nocompatible    " Don't make Vim vi-compatibile.
-set autoread		"auto reload when file changed"
-set autowrite		"auto relead when edit another file"
+set autoread        "auto reload when file changed"
+set autowrite       "auto relead when edit another file"
 set mouse=a         "Use Mouse on terminal"
 set sel=exclusive
 set mps+=<:>
@@ -17,7 +17,7 @@ set ttyfast
 set smartindent
 set autoindent
 if exists('+breakindent')
-  set breakindent showbreak=\ +
+    set breakindent showbreak=\ +
 endif
 set gdefault
 set smartcase
@@ -56,33 +56,32 @@ set backupskip=/tmp/*          " ┐ Don't create backups
 set backupskip+=/private/tmp/* " ┘ for certain files.
 
 set clipboard=unnamed          " ┐
-                               " │ Use the system clipboard
+" │ Use the system clipboard
 if has("unnamedplus")          " │ as the default register.
     set clipboard+=unnamedplus " │
 endif                          " ┘
 
 set cpoptions+=$               " When making a change, don't
-                               " redisplay the line, and instead,
-                               " put a `$` sign at the end of
-                               " the changed text.
+" redisplay the line, and instead,
+" put a `$` sign at the end of
+" the changed text.
 
 set colorcolumn=73             " Highlight certain column(s).
 set cursorline                 " Highlight the current line.
 set directory=~/.vim/swaps     " Set directory for swap files.
 set encoding=utf-8 nobomb      " Use UTF-8 without BOM.
-set history=5000               " Increase command line history.
 set hlsearch                   " Enable search highlighting.
 set ignorecase                 " Ignore case in search patterns.
 
 set incsearch                  " Highlight search pattern
-                               " as it is being typed.
+" as it is being typed.
 
 set laststatus=2               " Always show the status line.
 
 set lazyredraw                 " Do not redraw the screen while
-                               " executing macros, registers
-                               " and other commands that have
-                               " not been typed.
+" executing macros, registers
+" and other commands that have
+" not been typed.
 
 set listchars=tab:▸\           " ┐
 set listchars+=trail:·         " │ Use custom symbols to
@@ -94,24 +93,24 @@ set mousehide                  " Hide mouse pointer while typing.
 set noerrorbells               " Disable error bells.
 
 set nojoinspaces               " When using the join command,
-                               " only insert a single space
-                               " after a `.`, `?`, or `!`.
+" only insert a single space
+" after a `.`, `?`, or `!`.
 
 set nostartofline              " Kept the cursor on the same column.
 set report=0                   " Report the number of lines changed.
 set scrolloff=5                " When scrolling, keep the cursor
-                               " 5 lines below the top and 5 lines
-                               " above the bottom of the screen.
+" 5 lines below the top and 5 lines
+" above the bottom of the screen.
 set shortmess=aAItW            " Avoid all the hit-enter prompts.
 set showcmd                    " Show the command being typed.
 set showmode                   " Show current mode.
 set spelllang=en_us            " Set the spellchecking language.
 set smartcase                  " Override `ignorecase` option
-                               " if the search pattern contains
-                               " uppercase characters.
+" if the search pattern contains
+" uppercase characters.
 set synmaxcol=2500             " Limit syntax highlighting (this
-                               " avoids the very slow redrawing
-                               " when files contain long lines).
+" avoids the very slow redrawing
+" when files contain long lines).
 set tabstop=4                  " ┐
 set softtabstop=4              " │ Set global <TAB> settings.
 set shiftwidth=4               " │
@@ -127,16 +126,16 @@ set noerrorbells               " │ Disable beeping and window flashing
 set t_vb=                      " ┘ https://vim.wikia.com/wiki/Disable_beeping
 
 set wildmenu                   " Enable enhanced command-line
-                               " completion (by hitting <TAB> in
-                               " command mode, Vim will show the
-                               " possible matches just above the
-                               " command line with the first
-                               " match highlighted).
+" completion (by hitting <TAB> in
+" command mode, Vim will show the
+" possible matches just above the
+" command line with the first
+" match highlighted).
 
 set winminheight=0             " Allow windows to be squashed.
 syntax on
 set tags+=tags;/ "Ctags Finding Upper directory"
-" typos miss handling
+let mapleader = ","
 command! -bang E e<bang>
 command! -bang Q q<bang>
 command! -bang W w<bang>
@@ -162,13 +161,6 @@ nnoremap tl :tablast<CR>
 nnoremap te :tabedit<CR>
 nnoremap tm :tabm<CR>
 nnoremap tc :tabclose
-highlight Comment term=underline ctermfg=2 gui=bold guifg=SeaGreen
-highlight Function term=underline ctermfg=5 guifg=Purple
-highlight Type term=underline ctermfg=6 guifg=DarkCyan
-highlight String term=bold
-highlight Character term=bold
-highlight Number term=bold
-highlight Directory term=underline ctermfg=1 guifg=Magenta
 " ----------------------------------------------------------------------
 " | Plugins                                                            |
 " ----------------------------------------------------------------------
@@ -180,247 +172,91 @@ highlight Directory term=underline ctermfg=1 guifg=Magenta
 filetype off
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 " Include Vundle in the runtime path.
-set runtimepath+=~/.vim/bundle/Vundle.vim
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-" Initialize Vundle and specify the path
-" where the plugins should be installed.
-call vundle#begin("~/.vim/plugins")
-    Plugin 'VundleVim/Vundle.vim'
-    "=============================
-	"========Programming =========
-	"=============================
-    Plugin 'chrisbra/unicode.vim'
-    Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'isRuslan/vim-es6'
-    Plugin 'marijnh/tern_for_vim'
-	"Plugin 'vheon/jedihttp'
-	Plugin 'davidhalter/jedi'
-	Plugin 'davidhalter/jedi-vim'
-	Plugin 'tfnico/vim-gradle'
-    Plugin 'mattn/webapi-vim'
-    Plugin 'mhinz/vim-signify'
-    Plugin 'moll/vim-node'
-    Plugin 'mtscout6/syntastic-local-eslint.vim'
-    Plugin 'nathanaelkane/vim-indent-guides'
-	Plugin 'vim-syntastic/syntastic'
-    Plugin 'tomtom/tcomment_vim'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'tpope/vim-fugitive'
-	Plugin 'airblade/vim-gitgutter'	        "Git_Diff_sign
-    Plugin 'tpope/vim-repeat'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-unimpaired'
-	Plugin 'easymotion/vim-easymotion'      "Vim-easymotion:extend f,s search etc
-	Plugin 'christoomey/vim-tmux-navigator' "Vim-Tmux Integration
-	Plugin 'wakatime/vim-wakatime'
-    Plugin 'gisodal/vimgdb'
-	"-------------------------------------
-	"Code Display:Highlighting,Interface
-	"-------------------------------------
-    Plugin 'altercation/vim-colors-solarized'
-	Plugin 'edkolev/tmuxline.vim'         "TmuxStatus
-	Plugin 'vim-airline/vim-airline'		  "Vim status line
-	Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'jiangmiao/auto-pairs'         "Auto closing Bracket,parens,quotes"
-	Plugin 'flazz/vim-colorschemes'       "Adding vim colorscheme"
-	Plugin 'ap/vim-css-color'		      "Show CSS color on vim
-	Plugin 'tmux-plugins/vim-tmux'        "tmux.conf syntax
-    Plugin 'vhdirk/vim-cmake'             "Cmake Syntax"
-	Plugin 'gregsexton/matchtag'	      "Show matched (),<>
-	Plugin 'kien/rainbow_parentheses.vim' "Coloring (),<>
-	Plugin 'shougo/unite.vim'		      "Create_User_Interface
-	Plugin 'tpope/vim-sensible'
-	Plugin 'octol/vim-cpp-enhanced-highlight' "CPP Highlight
-	Plugin 'jelera/vim-javascript-syntax'     "Javascript Syntax Highlight
-    Plugin 'gtags.vim'
-    Plugin 'joereynolds/gtags-scope'
-	Plugin 'tomasr/molokai'
-	Plugin 'kshenoy/vim-signature'	  "Highlight mark of vim
-	Plugin 'godlygeek/tabular'		  "Aligning Text
-	Plugin 'Yggdroot/indentline'	  "Show Indent
-	Plugin 'alisdair/vim-armasm'
-	Plugin 'ekalinin/dockerfile.vim'
-    Plugin 'prettier/vim-prettier'
-    "-------------------------------------
-	"AutoCompletion
-	"-------------------------------------
-	Plugin 'valloric/youcompleteme'
-	"-------------------------------------
-	"File/buf/ Explorer
-	"-------------------------------------
-    Plugin 'mhinz/vim-startify'
-    Plugin 'kien/ctrlp.vim'
-	Plugin 'shougo/vimfiler.vim'	  "@@FILE EXPLORER@@ MUST HAVE
-	Plugin 'majutsushi/tagbar'        "Source Tag Explorer
-	"-------------------------------------
-	"Recording/History
-	"-------------------------------------
-   	Plugin 'dietsche/vim-lastplace'	  "Save cursor last position
+call plug#begin('~/.vim/plugged')
 
-if v:version >= 704
-	"" Snippets
-	Plugin 'shougo/vimshell.vim'	  "Enable_run_shell, :shell
-	Plugin 'FelikZ/ctrlp-py-matcher'
-	packadd! matchit
+Plug 'mhinz/vim-signify'
+Plug 'junegunn/tabularize'
+Plug 'junegunn/fzf'
+Plug 'mileszs/ack.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'sjl/gundo.vim'
+Plug 'roxma/vim-paste-easy'
+Plug 'sheerun/vim-polyglot'
+Plug 'shougo/neosnippet-snippets'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-	runtime! macros/matchit.vim
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'terryma/vim-multiple-cursors'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'liuchengxu/vista.vim'
+Plug 'easymotion/vim-easymotion'      "Vim-easymotion:extend f,s search etc
+Plug 'christoomey/vim-tmux-navigator' "Vim-Tmux Integration
+Plug 'edkolev/tmuxline.vim'         "TmuxStatus
+Plug 'vim-airline/vim-airline'        "Vim status line
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jiangmiao/auto-pairs'         "Auto closing Bracket,parens,quotes"
+Plug 'flazz/vim-colorschemes'       "Adding vim colorscheme"
+Plug 'ap/vim-css-color'           "Show CSS color on vim
+Plug 'gregsexton/matchtag'        "Show matched (),<>
+Plug 'tpope/vim-sensible'
+Plug 'kshenoy/vim-signature'      "Highlight mark of vim
+Plug 'mhinz/vim-startify'
+Plug 'kien/ctrlp.vim'
+Plug 'shougo/vimfiler.vim'    "@@FILE EXPLORER@@ MUST HAVE
+Plug 'dietsche/vim-lastplace'     "Save cursor last position
+Plug 'Chiel92/vim-autoformat'
 
-call vundle#end()
+call plug#end()
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 " Re-enable file type detection
 " (disabling it was required by Vundle).
 runtime! plugin/sensible.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 syntax enable
-let g:molokai_original = 1
 filetype plugin indent on
 filetype plugin on
 filetype on
+let g:deoplete#enable_at_startup = 1
+let g:ale_fix_on_save = 1
+" ----------------------------------------------------------------------
+" | Color Scheme                                                       |
+" ----------------------------------------------------------------------
+set t_Co=256                   " Enable full-color support.
+set background=dark            " Use colors that look good
+if !has("gui_running")
+    let g:solarized_contrast = "high"
+    let g:solarized_termcolors = 256
+    let g:solarized_termtrans = 1
+    let g:solarized_visibility = "high"
+endif
+colorscheme solarized
+" ----------------------------------------------------------------------
+" | Key Mappings                                                       |
+" ----------------------------------------------------------------------
+noremap <Leader>af :Autoformat<CR>
+au BufWrite * :Autoformat
 " ----------------------------------------------------------------------
 " | Plugins - Indent Guides                                            |
 " ----------------------------------------------------------------------
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd
-        \ guibg=#00323D
-        \ ctermbg=Magenta
+            \ guibg=#00323D
+            \ ctermbg=Magenta
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven
-        \ guibg=#073642
-        \ ctermbg=DarkMagenta
-" ----------------------------------------------------------------------
-" | Plugins - Markdown                                                 |
-" ----------------------------------------------------------------------
-let g:vim_markdown_folding_disabled=1
-" ----------------------------------------------------------------------
-" | Plugins - Signify                                                  |
-" ----------------------------------------------------------------------
-" Disable Signify by default.
-" https://github.com/mhinz/vim-signify
-let g:signify_disable_by_default=1
-" ----------------------------------------------------------------------
-" | Plugins - Syntastic                                                |
-" ----------------------------------------------------------------------
-" Inform Syntastic which checkers to use based on file types.
-" https://github.com/scrooloose/syntastic#faq
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-" Disable syntax checking by default.
-let g:syntastic_mode_map = {
-    \ "active_filetypes": [],
-    \ "mode": "passive",
-    \ "passive_filetypes": []
-\}
-" ----------------------------------------------------------------------
-" | Plugins - Markdown                                                 |
-" ----------------------------------------------------------------------
-"
-"-----------------------------------------------------------------------
-" | Plugins - Clang Format
-"-----------------------------------------------------------------------
-let g:clang_format#detect_style_file = 0
-let g:clang_format#auto_format_on_insert_leave = 0
-let g:clang_format#style_options = {
-			\ "BasedOnStyle": "LLVM",
-			\ "Standard": "C++11",
-			\ "SortIncludes": "true",
-			\ "AccessModifierOffset": -1,
-			\ "PointerBindsToType": "false",
-			\ "DerivePointerBinding": "false",
-			\ "AllowShortLoopsOnASingleLine": "false",
-			\ "AllowShortBlocksOnASingleLine" : "false",
-			\ "AllowShortIfStatementsOnASingleLine": "false",
-			\ "AlwaysBreakTemplateDeclarations": "false",
-			\ "AlignConsecutiveAssignments": "true",
-			\ "AlignEscapedNewlinesLeft": "true",
-			\ "AlignTrailingComments": "true",
-			\ "AllowAllParametersOfDeclarationOnNextLine": "true",
-			\ "ConstructorInitializerIndentWidth": 2,
-			\ "AlignOperands": "true",
-			\ "ColumnLimit": 140,
-			\ "IndentCaseLabels": "true",
-			\ "IndentWidth": 4,
-			\ "TabWidth": 4,
-			\ }
-"au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>= :ClangFormat<cr>
-" }}}
-" ----------------------------------------------------------------------
-" | Plugins - GTAGS                                                    |
-" ----------------------------------------------------------------------
-nmap <C-]><C-]> :GtagsCursor<CR>
-function! LoadGTAGSCscope()
-    let curdir = getcwd()
-    while !filereadable("GTAGS") && getcwd() != "/"
-        cd ..
-    endwhile
-    if filereadable("GTAGS")
-        set nocscopeverbose
-        exe "cs add " . getcwd() . " " . "/GTAGS"
-        set cscopeverbose
-    endif
-    execute "cd " . curdir
-endfunction
-if has("cscope")
-    set cscopetag
-    set csprg=gtags-cscope
-    set csto=0
-    au BufEnter /* call LoadGTAGSCscope()
-    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-    "Mouse
-    nmap <2-LeftMouse> :cs find d<C-R>=expand("<cword>")<CR>:<C-R>=line('.')<CR>:%<CR>
-    set timeoutlen=4500
-endif
+            \ guibg=#073642
+            \ ctermbg=DarkMagenta
 " ----------------------------------------------------------------------
 " | VIM commentary
 " ----------------------------------------------------------------------
 autocmd FileType apache setlocal commentstring=#\ %s
-" ----------------------------------------------------------------------
-" | Helper Functions                                                   |
-" ----------------------------------------------------------------------
-function! GetGitBranchName()
-    let branchName = ""
-    if exists("g:loaded_fugitive")
-        let branchName = "[" . fugitive#head() . "]"
-    endif
-    return branchName
-endfunction
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function! StripTrailingWhitespaces()
-    " Save last search and cursor position.
-    let searchHistory = @/
-    let cursorLine = line(".")
-    let cursorColumn = col(".")
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    " Strip trailing whitespaces.
-    %s/\s\+$//e
-    " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    " Restore previous search history and cursor position.
-    let @/ = searchHistory
-    call cursor(cursorLine, cursorColumn)
-endfunction
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function! ToggleLimits()
-    if ( &colorcolumn == "73" )
-        set colorcolumn+=51,81
-    else
-        set colorcolumn-=51,81
-    endif
-endfunction
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-function! ToggleRelativeLineNumbers()
-    if ( &relativenumber == 1 )
-        set number
-    else
-        set relativenumber
-    endif
-endfunction
-
 " ----------------------------------------------------------------------
 " | Automatic Commands                                                 |
 " ----------------------------------------------------------------------
@@ -458,289 +294,7 @@ if has("autocmd")
 
     augroup END
     " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    " Automatically strip the trailing
-    " whitespaces when files are saved.
-    augroup strip_trailing_whitespaces
-        " List of file types for which the trailing whitespaces
-        " should not be removed:
-        let excludedFileTypes = []
-        " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        " Only strip the trailing whitespaces if
-        " the file type is not in the excluded list.
-        autocmd!
-        autocmd BufWritePre * if index(excludedFileTypes, &ft) < 0 | :call StripTrailingWhitespaces()
-    augroup END
 endif
-" ----------------------------------------------------------------------
-" | Color Scheme                                                       |
-" ----------------------------------------------------------------------
-set t_Co=256                   " Enable full-color support.
-set background=dark            " Use colors that look good
-if !has("gui_running")
-    let g:solarized_contrast = "high"
-    let g:solarized_termcolors = 256
-    let g:solarized_termtrans = 1
-    let g:solarized_visibility = "high"
-endif
-colorscheme solarized          " Use custom color scheme.
-" ----------------------------------------------------------------------
-" | Key Mappings                                                       |
-" ----------------------------------------------------------------------
-let mapleader = ","
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-nmap <leader>* :%s/\<<C-r><C-w>\>//<Left>
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-map <leader>W :w !sudo tee %<CR>
-" ----------------------------------------------------------------------
-" | Plugin Settings
-" ----------------------------------------------------------------------
-let g:ycm_error_symbol = '✗'
-let g:ycm_warning_symbol = '⚠'
-let g:ycm_enable_diagnostic_highlighting = 1
-let g:ycm_echo_current_diagnostic = 1
-let g:ycm_always_populate_location_list = 1
-let g:ycm_open_loclist_on_ycm_diags = 1
-let g:ycm_max_diagnostics_to_display = 30
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_complete_in_comments = 0
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_key_detailed_diagnostics = '<leader>o'
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_auto_trigger = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar' : 1,
-			\ 'qf' : 1,
-			\ 'unite' : 1,
-			\ 'vimwiki' : 1,
-			\ 'pandoc' : 1,
-			\ 'infolog' : 1,
-			\ 'mail' : 1
-			\}
-" ----------------------------------------------------------------------
-" | TagBar |
-" ----------------------------------------------------------------------
-let g:tagbar_type_armasm = {
-			\ 'ctagsbin'  : 'ctags',
-			\ 'ctagsargs' : '-f- --format=2 --excmd=pattern --fields=nksSa --extra= --sort=no --language-force=asm',
-			\ 'kinds' : [
-			\ 'm:macros:0:1',
-			\ 't:types:0:1',
-			\ 'd:defines:0:1',
-			\ 'l:labels:0:1'
-			\ ]
-			\}
-let g:tagbar_type_make = {
-			\ 'kinds':[
-			\ 'm:macros',
-			\ 't:targets'
-			\ ]
-			\}
-let g:tagbar_type_systemverilog= {
-			\ 'ctagstype' : 'systemverilog',
-			\ 'kinds'     : [
-			\'c:classes',
-			\'t:tasks',
-			\'f:functions',
-			\'m:modules',
-			\'i:interfaces',
-			\'v:variables',
-			\'d:defines',
-			\'e:typedefs',
-			\'a:parameters'
-			\]
-			\}
-let g:tagbar_type_typescript = {
-			\ 'ctagstype': 'typescript',
-			\ 'kinds': [
-			\ 'c:classes',
-			\ 'n:modules',
-			\ 'f:functions',
-			\ 'v:variables',
-			\ 'v:varlambdas',
-			\ 'm:members',
-			\ 'i:interfaces',
-			\ 'e:enums',
-			\ ]
-			\ }
-let g:tagbar_type_coffee = {
-			\ 'ctagsbin' : 'coffeetags',
-			\ 'ctagsargs' : '',
-			\ 'kinds' : [
-			\ 'f:functions',
-			\ 'o:object',
-			\ ],
-			\ 'sro' : ".",
-			\ 'kind2scope' : {
-			\ 'f' : 'object',
-			\ 'o' : 'object',
-			\ }
-			\ }
-let g:tagbar_type_r = {
-			\ 'ctagstype' : 'r',
-			\ 'kinds'     : [
-			\ 'f:Functions',
-			\ 'g:GlobalVariables',
-			\ 'v:FunctionVariables',
-			\ ]
-			\ }
-let g:tagbar_type_ruby = {
-			\ 'kinds' : [
-			\ 'm:modules',
-			\ 'c:classes',
-			\ 'd:describes',
-			\ 'C:contexts',
-			\ 'f:methods',
-			\ 'F:singleton methods'
-			\ ]
-			\ }
-let g:tagbar_type_snippets = {
-			\ 'ctagstype' : 'snippets',
-			\ 'kinds' : [
-			\ 's:snippets',
-			\ ]
-			\ }
-let g:tagbar_type_go = {
-			\ 'ctagstype' : 'go',
-			\ 'kinds'     : [
-			\ 'p:package',
-			\ 'i:imports:1',
-			\ 'c:constants',
-			\ 'v:variables',
-			\ 't:types',
-			\ 'n:interfaces',
-			\ 'w:fields',
-			\ 'e:embedded',
-			\ 'm:methods',
-			\ 'r:constructor',
-			\ 'f:functions'
-			\ ],
-			\ 'sro' : '.',
-			\ 'kind2scope' : {
-			\ 't' : 'ctype',
-			\ 'n' : 'ntype'
-			\ },
-			\ 'scope2kind' : {
-			\ 'ctype' : 't',
-			\ 'ntype' : 'n'
-			\ },
-			\ 'ctagsbin'  : 'gotags',
-			\ 'ctagsargs' : '-sort -silent'
-			\ }
-
-let g:tagbar_type_haskell = {
-			\ 'ctagsbin'  : 'hasktags',
-			\ 'ctagsargs' : '-x -c -o-',
-			\ 'kinds'     : [
-			\  'm:modules:0:1',
-			\  'd:data: 0:1',
-			\  'd_gadt: data gadt:0:1',
-			\  't:type names:0:1',
-			\  'nt:new types:0:1',
-			\  'c:classes:0:1',
-			\  'cons:constructors:1:1',
-			\  'c_gadt:constructor gadt:1:1',
-			\  'c_a:constructor accessors:1:1',
-			\  'ft:function types:1:1',
-			\  'fi:function implementations:0:1',
-			\  'o:others:0:1'
-			\ ],
-			\ 'sro'        : '.',
-			\ 'kind2scope' : {
-			\ 'm' : 'module',
-			\ 'c' : 'class',
-			\ 'd' : 'data',
-			\ 't' : 'type'
-			\ },
-			\ 'scope2kind' : {
-			\ 'module' : 'm',
-			\ 'class'  : 'c',
-			\ 'data'   : 'd',
-			\ 'type'   : 't'
-			\ }
-			\ }
-
-let g:tagbar_type_rust = {
-			\ 'ctagstype' : 'rust',
-			\ 'kinds' : [
-			\'T:types,type definitions',
-			\'f:functions,function definitions',
-			\'g:enum,enumeration names',
-			\'s:structure names',
-			\'m:modules,module names',
-			\'c:consts,static constants',
-			\'t:traits,traits',
-			\'i:impls,trait implementations',
-			\ ]
-			\ }
-
-let g:tagbar_type_markdown = {
-			\ 'ctagstype' : 'markdown',
-			\ 'kinds' : [
-			\ 'h:Heading_L1',
-			\ 'i:Heading_L2',
-			\ 'k:Heading_L3'
-			\ ]
-			\ }
-" }}}
-let g:tagbar_autoshowtag = 1
-let g:tagbar_show_linenumbers = 0
-let g:tagbar_singleclick = 1
-" ----------------------------------------------------------------------
-" | Syntastic                                                 |
-" ----------------------------------------------------------------------
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol='✗'
-let g:syntastic_style_warning_symbol='⚠'
-let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
-let g:syntastic_echo_current_error = 1
-let g:syntastic_enable_balloons = 1
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_sort_aggregated_errors = 0
-let g:syntastic_id_checkers = 1
-let g:syntastic_cpp_checkers=['cppcheck', 'cpplint']
-let g:syntastic_cpp_cpplint_thres = 5
-let g:syntastic_cpp_cpplint_args = '--verbose=3'
-let g:syntastic_erlang_checkers = ['escript']
-let g:syntastic_lua_checkers = ['luac']
-let g:synastic_nasm_checkers = ['nasm']
-let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_lib_path = ['./lib', './lib/auto']
-let g:syntastic_perl_perlcritic_thres = 5
-let g:syntastic_perl_perlcritic_post_args = '--verbose "\%s:\%f:\%l:\%c: \%p: \%m\n"'
-let g:syntastic_java_checkers = ['javac', 'checkstyle']
-let g:syntastic_python_checkers = ['python', 'pylint', 'pyflakes']
-let g:syntastic_css_checkers = ['recess', 'prettycss']
-let g:syntastic_html_checkers = ['jshint', 'w3', 'validator']
-let g:syntastic_xhtml_checkers = ['tidy', 'jshint']
-let g:syntastic_javascript_closurecompiler_script = '/usr/bin/closure'
-let g:syntastic_javascript_checkers = ['closurecompiler']
-let g:syntastic_javascript_jshint_quiet_messages = { "regex": ["Use '===' to compare with 'null'.", "Use '!==' to compare with 'null'."] }
-let g:syntastic_javascript_gjslint_quiet_messages = { "regex": ['Extra space after ","', 'No docs found for member', 'Missing docs for parameter:', 'Line too long'] }
-let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_xml_checkers = ['xmllint']
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_quiet_messages = { "regex": ['Missing file\|class\|function doc comment', 'You must use \\"/\*\*\\" style comments for a function\|file comment'] }
 " ----------------------------------------------------------------------
 " | VIMFILER                                                  |
 " ----------------------------------------------------------------------
@@ -775,18 +329,8 @@ map  <S-m> <Plug>(easymotion-prev)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 let g:EasyMotion_smartcase = 1
 " ----------------------------------------------------------------------
-" | CTRLP                                                   |
+" | Fuzzy Finder
 " ----------------------------------------------------------------------
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll)$',
-			\ 'link': 'some_bad_symbolic_links',
-			\ }
-let g:ctrlp_extensions = ['tag', 'buffertag','mixed']
 "-----------IGNORE settings--------"
 set wildmode=list:longest,full
 set wildignore=*.o,*.obj "stuff to ignore when tab completing
@@ -801,17 +345,3 @@ set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
 set wildignore+=*/.nx/**,*.app
 set wildignore+=*/build/**
-"=================================
-"Custom Function
-"=================================
-function! SetTags()
-    let curdir = getcwd()
-    while !filereadable("tags") && getcwd() != "/"
-        cd ..
-    endwhile
-    if filereadable("tags")
-        execute "set tags+=" . getcwd() . "/tags"
-    endif
-    execute "cd " . curdir
-endfunction
-call SetTags()
