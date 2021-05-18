@@ -213,7 +213,6 @@ Plug 'mhinz/vim-startify'
 Plug 'kien/ctrlp.vim'
 Plug 'shougo/vimfiler.vim'    "@@FILE EXPLORER@@ MUST HAVE
 Plug 'dietsche/vim-lastplace'     "Save cursor last position
-Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -238,11 +237,6 @@ if !has("gui_running")
     let g:solarized_visibility = "high"
 endif
 colorscheme solarized
-" ----------------------------------------------------------------------
-" | Key Mappings                                                       |
-" ----------------------------------------------------------------------
-noremap <Leader>af :Autoformat<CR>
-au BufWrite * :Autoformat
 " ----------------------------------------------------------------------
 " | Plugins - Indent Guides                                            |
 " ----------------------------------------------------------------------

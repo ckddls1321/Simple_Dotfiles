@@ -1,34 +1,31 @@
 - defaults:
-        link:
-            relink: true
-            force: true
+  link:
+    relink: true
+    force: true
 
 - clean: ['~']
 
 - link:
-        ~/.bashrc: src/shell/bashrc
-        ~/.tmux.conf: src/tmux/tmux.conf
-        ~/.vimrc: src/vim/vimrc
-        ~/.zshrc: src/shell/zshrc
-        ~/.gitconfig: src/git/gitconfig
-        ~/.gitignore: src/git/gitignore
-        ~/.zshrc: src/shell/zshrc
-        ~/.ctags: src/tag/.ctags
-        ~/.globalrc: src/tag/gtags.conf
-        ~/.vim/plugins/vim-template:
-          create: true
-          path: src/vim/vim-template
-        ~/.oh-my-zsh: oh-my-zsh
-        ~/.vim/.ycm_extra_conf.py: src/vim/ycm_extra_conf.py
-        ~/.tmux/plugins/tpm:
-          create: true
-          path: tpm
-        ~/.pyenv:
-          create: true
-          path: pyenv
-        ~/.pyenv/plugins/pyenv-virtualenv:
-          create: true
-          path: pyenv-virtualenv
+  ~/.bashrc: src/shell/bashrc
+  ~/.tmux.conf: src/tmux/tmux.conf
+  ~/.vimrc: src/vim/vimrc
+  ~/.zshrc: src/shell/zshrc
+  ~/.gitconfig: src/git/gitconfig
+  ~/.gitignore: src/git/gitignore
+  ~/.zshrc: src/shell/zshrc
+  ~/.ctags: src/tag/.ctags
+  ~/.globalrc: src/tag/gtags.conf
+  ~/.vim/plugins/vim-template:
+    create: true
+    path: src/vim/vim-template
+    ~/.oh-my-zsh: oh-my-zsh
+    ~/.vim/.ycm_extra_conf.py: src/vim/ycm_extra_conf.py
+    ~/.tmux/plugins/tpm:
+      create: true
+      path: tpm
+      ~/.pyenv:
+        create: true
+        path: pyenv
         ~/.rbenv:
           create: true
           path: rbenv
@@ -40,4 +37,4 @@
           path: nvm
 
 - shell:
-      - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --recursive, Installing submodules]

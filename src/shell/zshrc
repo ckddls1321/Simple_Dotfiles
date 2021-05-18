@@ -82,12 +82,6 @@ if [ -d $HOME/.pyenv ]; then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 fi
-# RUBYENV settings
-export RBENV_ROOT="${HOME}/.rbenv"
-if [ -d "${RBENV_ROOT}" ]; then
-  export PATH="${RBENV_ROOT}/bin:${PATH}"
-  eval "$(rbenv init -)"
-fi
 # GOENV setting
 if [ -d $HOME/.goenv ]; then
 	export PATH=${HOME}/.goenv/bin:${PATH}
